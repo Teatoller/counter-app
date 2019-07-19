@@ -2,11 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 function Counter(props) {
+    console.log('render props...', props);
     return (
         <div>
             <h1>Mega Counter!</h1>
             <p>Count: {props.count} </p>
-            <button>Click to Increment</button>
+            <button onClick={props.onIncremenClick}>Click to Increment</button>
         </div>
     )
 }
@@ -18,4 +19,16 @@ function mapStateToProps (state) {
     }
 };
 
-export default connect(mapStateToProps)(Counter);
+function mapDispatchToProps(dispatch) {
+    return {
+        onIncremenClick: ()=> {
+            console.log("Clicking....");
+            const action = {
+                type: 'INCREMENT',
+            }
+            dispatch(action);
+        }
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Counter);
