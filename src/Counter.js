@@ -8,6 +8,7 @@ function Counter(props) {
             <h1>Mega Counter!</h1>
             <p>Count: {props.count} </p>
             <button onClick={props.onIncremenClick}>Click to Increment</button>
+            <button onClick={props.onDecremenClick}>Click to Decrement</button>
         </div>
     )
 }
@@ -25,6 +26,13 @@ function mapDispatchToProps(dispatch) {
             console.log("Clicking....");
             const action = {
                 type: 'INCREMENT',
+            }
+            dispatch(action);
+        },
+        onDecremenClick: ()=> {
+            console.log("Clicking....");
+            const action = {
+                type: 'DECREMENT',
             }
             dispatch(action);
         }
